@@ -34,6 +34,7 @@ jobs:
         git apply browser.patch
         cd app/src/main/assets
         rm -rf ask.png ask.webp brave.webp duckduckgo.png duckduckgo.webp ecosia.webp ekoru.webp mojeek.webp naver.png naver.webp qwant.webp searx.webp startpage.png startpage.webp yahoo.png yahoo.webp yandex.png yandex.webp
+
     - name: 开始编译
       run: |
         cd browser
