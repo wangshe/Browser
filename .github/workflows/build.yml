@@ -18,18 +18,25 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
+        
+    - name: 建立工作目录
+      run: |
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
 
     - name: 克隆源码
+      working-directory: /workdir
       run: |
-        git clone https://github.com/Slion/Fulguris -b main
-        cd Fulguris
+        git clone https://github.com/Slion/Fulguris -b main browser
+        ln -sf /workdir/browser $GITHUB_WORKSPACE/browser
+        cd browser
         wget https://gist.github.com/wangshe/ef25a5309766a5d9c3da7bdb1a7553e1/raw/browser.patch
         git apply browser.patch
         cd app/src/main/assets
         rm -rf ask.png ask.webp brave.webp duckduckgo.png duckduckgo.webp ecosia.webp ekoru.webp mojeek.webp naver.png naver.webp qwant.webp searx.webp startpage.png startpage.webp yahoo.png yahoo.webp yandex.png yandex.webp
     - name: 开始编译
       run: |
-        cd Fulguris
+        cd browser
         chmod +x gradlew
         ./gradlew assembleStyxBaseUndef
 
@@ -37,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: browser
-        path: ./app/build/outputs/apk
+        path: browser/app/build/outputs/apk
