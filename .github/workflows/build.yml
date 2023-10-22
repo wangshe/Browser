@@ -39,10 +39,10 @@ jobs:
       run: |
         cd browser
         chmod +x gradlew
-        ./gradlew assembleStyxBaseUndef
+        ./gradlew assembleSlionsFullFdroid
 
     - name: 上传apk
       uses: actions/upload-artifact@main
       with:
         name: browser
-        path: browser/app/build/outputs/apk/styxBaseUndef/release
+        path: browser/app/build/outputs/apk
