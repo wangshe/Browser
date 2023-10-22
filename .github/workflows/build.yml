@@ -37,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: browser
-        path: app/build/outputs/apk/styxBaseUndef\release
+        path: ./app/build/outputs/apk
