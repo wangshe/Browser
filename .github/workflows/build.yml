@@ -45,4 +45,4 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: browser
-        path: browser/app/build/outputs/apk
+        path: browser/app/build/outputs/apk/slionsFullFdroid/release
